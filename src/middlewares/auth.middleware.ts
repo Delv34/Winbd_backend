@@ -18,7 +18,6 @@ export interface AuthenticatedRequest extends Request {
  */
 export const authMiddleware = (req: AuthenticatedRequest, res: Response, next: NextFunction): void => {
     const authHeader = req.headers.authorization
-
     if (!authHeader || !authHeader.startsWith('Bearer ')) {
     res.status(401).json({message: 'Доступ запрещен. Токен отсутствует или неподдерживаемый формат'})
     return

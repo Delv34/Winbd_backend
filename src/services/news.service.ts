@@ -1,6 +1,19 @@
 import {NewsModel, type INews, type NewsStatus} from '../models/news.model.js';
 import {type Types} from 'mongoose';
 
+/**
+ * Достаёт url всех картинок из content
+ */
+function extractImageUrls(content: string): string[] {
+    const urls: string[] = []
+    const regex = /<img[^>]+src=["']([^"']+["'])/g
+    let match: RegExpExecArray | null
+    while ((match = regex.exec(content)) !== null) {
+        if (match[1] && !urls.includes(match[1])) urls.push(match[1])
+    }
+    return urls
+}
+
 export const newsService = {
     /**
      * Создает новую новость.
@@ -16,6 +29,7 @@ export const newsService = {
             title,
             content,
             author: authorId,
+            images: extractImageUrls(content),
             publishAt: parsedDate,
             status
         });
@@ -25,9 +39,14 @@ export const newsService = {
      * Получает список всех новостей, которые уже опубликованы
      */
     async getAllPublished(): Promise<INews[]> {
-
-        const query = NewsModel.find()
         return (await NewsModel.find({status: 'published' }).sort({ publishAt: -1}))
+    },
+
+    /**
+     * Получает список новостей пользователя, находящихся в статусе черновика
+     */
+    async getUserDrafts(authorId: string): Promise<INews[]> {
+        return (await NewsModel.find({status: 'draft', authorId: authorId}).sort({publishAt: -1}))
     },
 
     /**
@@ -44,7 +63,7 @@ export const newsService = {
 
         // Проверка прав: сравниваем ID автора новости и ID текущего пользователя
         if(news.author.toString() !== authorId) {
-            throw new Error('У вас неу прав на редактирование этой новости')
+            throw new Error('У вас нету прав на редактирование этой новости')
         }
 
         // Если обновляется дата публикации, пересчитываем статус
@@ -55,7 +74,10 @@ export const newsService = {
         }
 
         if (updateData.title) news.title = updateData.title
-        if (updateData.content) news.content = updateData.content
+        if (updateData.content) {
+            news.content = updateData.content
+            news.images = extractImageUrls(updateData.content)
+        } 
         
 
         return await news.save()

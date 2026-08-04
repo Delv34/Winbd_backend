@@ -1,0 +1,277 @@
+type: collection.insomnia.rest/5.0
+schema_version: "5.1"
+name: Winbd
+meta:
+  id: wrk_c4db720678d84c759e7a559d99a2b663
+  created: 1785768300065
+  modified: 1785842895243
+  description: ""
+collection:
+  - name: Windb_backend
+    meta:
+      id: fld_e469b877ca08492298b5ad5f9501c380
+      created: 1785768351805
+      modified: 1785768351805
+      sortKey: -1785768351805
+      description: ""
+    children:
+      - name: Auth
+        meta:
+          id: fld_6e6e7f7a6393410194f8c39a280943da
+          created: 1785768762231
+          modified: 1785768762231
+          sortKey: -1785768762231
+          description: ""
+        children:
+          - url: "{{hostname}}/auth/register"
+            name: Registration
+            meta:
+              id: req_4eb29d52f186458f801192a34346f676
+              created: 1785768358592
+              modified: 1785771477732
+              isPrivate: false
+              description: ""
+              sortKey: -1785768772876
+            method: POST
+            body:
+              mimeType: application/json
+              text: |-
+                {
+                	"email":"test1@mail.ru",
+                	"password":"123gfhjkm456"
+                }
+            headers:
+              - name: Content-Type
+                value: application/json
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: "{{hostname}}/auth/login"
+            name: Login
+            meta:
+              id: req_9b2c0ef46b77448c960cb833f993c0cf
+              created: 1785768584701
+              modified: 1785771484605
+              isPrivate: false
+              description: ""
+              sortKey: -1785768772776
+            method: POST
+            body:
+              mimeType: application/json
+              text: |-
+                {
+                	"email":"test1@mail.ru",
+                	"password":"123gfhjkm456"
+                }
+            headers:
+              - name: Content-Type
+                value: application/json
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+      - name: News
+        meta:
+          id: fld_58acd88bf883408bb282c2c48da690bf
+          created: 1785768769590
+          modified: 1785768769590
+          sortKey: -1785768769590
+          description: ""
+        children:
+          - url: "{{hostname}}/news/6a70b5efc612f16487a6244d"
+            name: Delete news
+            meta:
+              id: req_0ccc00f4e5474b50be9dac14d3b2d200
+              created: 1785768750479
+              modified: 1785771662996
+              isPrivate: false
+              description: ""
+              sortKey: -1785768777514
+            method: DELETE
+            headers:
+              - name: Authorization
+                value: Bearer
+                  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhNzBiNWQ3YzYxMmYxNjQ4N2E2MjQ0YyIsImlhdCI6MTc4NTc3MTQ4NSwiZXhwIjoxNzg1ODU3ODg1fQ.o2qW9SACv03m_AWM8ThL-QLTeHn_T-Ubg7MLCetztL8
+                description: ""
+                disabled: false
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: "{{hostname}}/news/6a714c9c86758ed4d2b5fea5"
+            name: Update news
+            meta:
+              id: req_30d5b719a99c4db9b4d133a6ee74dddb
+              created: 1785768799323
+              modified: 1785810200885
+              isPrivate: false
+              description: ""
+              sortKey: -1785768799323
+            method: PUT
+            body:
+              mimeType: application/json
+              text: |-
+                {
+                	"content":"измененный текст"
+                }
+            headers:
+              - name: Content-Type
+                value: application/json
+              - name: Authorization
+                value: Bearer
+                  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhNzE0YzYyODY3NThlZDRkMmI1ZmVhNCIsImlhdCI6MTc4NTgxMDAyMiwiZXhwIjoxNzg1ODk2NDIyfQ.Sxnn103jsafRC-9WoWxYSIP2X52spWI3WjGJ_Wp1TTA
+                description: ""
+                disabled: false
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: "{{hostname}}/news/"
+            name: Get news
+            meta:
+              id: req_336093e3509146db80f00f2ef0aee328
+              created: 1785768800530
+              modified: 1785771266847
+              isPrivate: false
+              description: ""
+              sortKey: -1785768800530
+            method: GET
+            headers:
+              - name: Authorization
+                value: Bearer
+                  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhNzBhYTZhNDE2ZDZhNGQ0MTU4MDEyMiIsImlhdCI6MTc4NTc2ODczNywiZXhwIjoxNzg1ODU1MTM3fQ.MhG_qMIQ91l1EHqJ5u92BXA3HLSVBFxksP5GkV2-Fjo
+                description: ""
+                disabled: false
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: "{{hostname}}/news/create"
+            name: Create news
+            meta:
+              id: req_8cbca92a53bd4f3e9a95da57bb34bafe
+              created: 1785768801741
+              modified: 1785810143899
+              isPrivate: false
+              description: ""
+              sortKey: -1785768801741
+            method: POST
+            body:
+              mimeType: application/json
+              text: |-
+                {
+                	"title":"Вторая новость",
+                	"content":"2222",
+                	"publishAt":"2026-08-04T12:22"
+                }
+            headers:
+              - name: Content-Type
+                value: application/json
+              - name: Authorization
+                value: Bearer
+                  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhNzE0YzYyODY3NThlZDRkMmI1ZmVhNCIsImlhdCI6MTc4NTgxMDAyMiwiZXhwIjoxNzg1ODk2NDIyfQ.Sxnn103jsafRC-9WoWxYSIP2X52spWI3WjGJ_Wp1TTA
+                description: ""
+                disabled: false
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: "{{hostname}}/news/drafts"
+            name: Get my drafted news
+            meta:
+              id: req_2093085c43e64f5aafd92f3937a70934
+              created: 1785771103857
+              modified: 1785810113799
+              isPrivate: false
+              description: ""
+              sortKey: -1785768799926.5
+            method: GET
+            headers:
+              - name: Authorization
+                value: Bearer
+                  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhNzE0YzYyODY3NThlZDRkMmI1ZmVhNCIsImlhdCI6MTc4NTgxMDAyMiwiZXhwIjoxNzg1ODk2NDIyfQ.Sxnn103jsafRC-9WoWxYSIP2X52spWI3WjGJ_Wp1TTA
+                description: ""
+                disabled: false
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: "{{hostname}}/media/upload"
+            name: Upload image
+            meta:
+              id: req_b7ee7ff0577d4836aa126468e09a8f6b
+              created: 1785841384056
+              modified: 1785842759278
+              isPrivate: false
+              description: ""
+              sortKey: -1785768800228.25
+            method: POST
+            body:
+              mimeType: multipart/form-data
+              params:
+                - name: image
+                  value: ""
+                  description: ""
+                  disabled: false
+                  fileName: /home/Delv34/Downloads/images.jpeg
+                  type: file
+            headers:
+              - name: Content-Type
+                value: multipart/form-data
+              - name: Authorization
+                value: Bearer
+                  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhNzE0YzYyODY3NThlZDRkMmI1ZmVhNCIsImlhdCI6MTc4NTg0MTQ3MiwiZXhwIjoxNzg1OTI3ODcyfQ.YiU58CHJCH80rhY4keRRj39FDcmXmqEZEeDFUtvfp6M
+                description: ""
+                disabled: false
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_84171d2e5fbcd13e504a47c32dfae28ec582762a
+    created: 1785768300121
+    modified: 1785768300121
+environments:
+  name: Base Environment
+  meta:
+    id: env_84171d2e5fbcd13e504a47c32dfae28ec582762a
+    created: 1785768300116
+    modified: 1785768643911
+    isPrivate: false
+  data:
+    hostname: http://localhost:3000

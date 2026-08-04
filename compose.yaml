@@ -3,14 +3,11 @@ services:
     image: mongo:latest
     container_name: mongodb
     ports:
-      - "27017:27017"
+      - "${MONGODB_PORT}:27017"
     environment:
-      MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: secret
-      MONGO_INITDB_DATABASE: test_backend
+      MONGO_INITDB_ROOT_USERNAME: ${MONGODB_USER}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGODB_PASSWORD}
+      MONGO_INITDB_DATABASE: ${MONGODB_DATABASE}
     volumes:
-      - mongo_data:/data/db
+      - ./mongo_data:/data/db
     restart: always
-
-volumes:
-  mongo_data:

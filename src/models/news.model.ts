@@ -18,6 +18,8 @@ export interface INews extends Document {
     title: string;
     /** Полное текстовое содержание (тело) новости */
     content: string;
+    /** Массив с изображениями которые пользователь загрузил в (тело) новости*/
+    images: string[];
     /** Идентификатор пользователя-автора статьи (ссылка на коллекцию 'users') */
     author: Types.ObjectId;
     /** Текущий статус публикации новости */
@@ -39,6 +41,10 @@ const newsSchema = new Schema<INews>({
     content: {
         type: String,
         required: true
+    },
+    images: {
+        type: [String],
+        default: []
     },
     author: {
         type: Schema.Types.ObjectId,

@@ -1,3 +1,5 @@
 node_modules/
 *.log
 dist/
+mongo_data/
+uploads/*
